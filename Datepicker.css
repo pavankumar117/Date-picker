@@ -1,3 +1,13 @@
 .click  {
 	cursor : pointer;
 }
+
+#mytable {
+	background-color: skyblue;
+	border: 2px solid black;
+	height: 100px;
+	margin-left: 13px;
+	padding: 15px;
+	width: 100px;
+
+}
