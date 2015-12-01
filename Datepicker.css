@@ -1,13 +1,46 @@
 .click  {
-	cursor : pointer;
+	cursor: pointer;
+	font-weight: bold;
+}
+.click:hover {
+	background-color: yellow;
+	border-radius : 100px;
 }
 
+#monthtd {
+	color: rgba(255,255,255,2.5);
+}
+
+
 #mytable {
+	border-radius: 10px;
 	background-color: skyblue;
 	border: 2px solid black;
+	color: hsl(35, 100%, 50%);
+	filter: drop-shadow(16px 16px 20px blue);
 	height: 100px;
-	margin-left: 13px;
+	margin-left: 25px;
+	margin-right: 0px;
 	padding: 15px;
 	width: 100px;
+	
+	
+}
 
+#tabledata1 {
+	cursor: pointer;
+}
+#tabledata1:hover {
+	
+	background-color: blue;
+	border-radius : 100px;
+	color: rgba(255,255,255,2.5);
+}
+
+#weektd {
+	color: rgba(255,255,255,2.5);
+}
+
+#yeartd {
+	color: rgba(255,255,255,2.5);
 }

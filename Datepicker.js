@@ -24,16 +24,16 @@ function Datepicker(temp,tempyear) {
 		printtable += "<table id = 'mytable'>";
 		printtable += "<tr align = 'center'>";
 			printtable += "<th onclick = 'monthdec()' class = 'click'><</th>";
-			printtable += "<th colspan = '2'>" + armonths[temp] + "</th>";
+			printtable += "<th colspan = '2' id = 'monthtd'>" + armonths[temp] + "</th>";
 			printtable += "<th onclick = 'monthinc()' class = 'click'>></th>";
 			printtable += "<th onclick = 'yeardec()' class = 'click'><</th>";
-			printtable += "<th colspan = '2'>" + tempyear + "</th>";
+			printtable += "<th colspan = '2' id = 'yeartd'>" + tempyear + "</th>";
 			printtable += "<th onclick = 'yearinc()' class = 'click'>></th>";
 		printtable += "</tr>";
 
 		printtable += "<tr align = 'center' colspan = '1'>"
 			for (var i = 0; i < arweeks.length; i++){
-				printtable += "<td>" + arweeks[i] + "</td>";
+				printtable += "<td id = 'weektd'>" + arweeks[i] + "</td>";
 			}
 		printtable += "</tr>";
 		//printing week days at their positions
@@ -41,7 +41,7 @@ function Datepicker(temp,tempyear) {
 			for (var k = 0; k < arweeks.length; k++){
 				if (weekday === k) {
 					for(var i = 0; i < total_Days_in_month; i++) {
-						printtable += "<td>" + (i+1) + "</td>";
+						printtable += "<td id = 'tabledata1' onclick = getdata()>" + (i+1) + "</td>";
 						count++;
 						if(count % 7 === 0) {
 							printtable += "</tr><tr align = 'center' colspan = '1'>";
@@ -55,12 +55,11 @@ function Datepicker(temp,tempyear) {
 			}
 			printtable += "</tr>";
 		printtable += "</table>";
-		document.getElementById('mydiv1').innerHTML=printtable;
+		document.getElementById('mydiv').innerHTML=printtable;
 	}return printtables(temp,tempyear);
 
-	function getdate() {
-		$('#textbox').val(tempyear + ',' + temp+1);
-		$('#textbox').val(temp+1);
+	function getdata() {
+		$('#textbox').val(tempyear);
 	}
 	return getdate();
 }
