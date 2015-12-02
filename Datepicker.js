@@ -7,12 +7,13 @@ var no_of_month_days = new Date(getdate.getFullYear(),getdate.getMonth()+1,0).ge
 var armonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
 		'Oct', 'Nov', 'Dec'];
 var arweeks = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
-
+var resultyear = 0;
+var resultmonth = 0;
 //******Function Date Picker********
 
 function Datepicker(tempmonth,tempyear) {
 	var tempmonth = month;
-	var printtable;
+	var printtable =""
 	var tempyear = year;
 
 // Function for printing tables
@@ -43,14 +44,14 @@ function Datepicker(tempmonth,tempyear) {
 				for (var k = 0; k < arweeks.length; k++){
 					if (weekday === k) {
 						for(var month_days = 1; month_days <= total_Days_in_month; month_days++) {
-							if(Yeartemp == tempyear && Monthtemp == tempmonth && date === i){
+							if(Yeartemp == tempyear && Monthtemp == tempmonth && date === month_days){
 								/*above if condition checks the to days month , date with printing
 								month , date and print the value separately*/
-								printtable += "<td id = 'today'>" + (month_days) + "</td>";
+								printtable += "<td id = 'today' class = 'tabledata1' onclick = 'check(" + month_days + ")'>" + (month_days) + "</td>";
 								count++;
 							}
 							else{
-								printtable += "<td id = 'tabledata1'>" + (month_days) + "</td>";
+								printtable += "<td class = 'tabledata1' onclick = 'check(" + month_days + ")'>" + ( month_days) + "</td>";
 								count++;
 								if(count % 7 === 0) {
 									printtable += "</tr><tr align = 'center' colspan = '1'>";
@@ -66,7 +67,8 @@ function Datepicker(tempmonth,tempyear) {
 			printtable += "</tr>";
 		printtable += "</table>";
 		document.getElementById('mydiv').innerHTML=printtable;
-		$('#textbox').val(tempyear + "/" +(tempmonth+1) + "/" + (month_days-1));
+	 resultyear = tempyear;
+	 resultmonth = tempmonth;
 	}return printtables(tempmonth,tempyear);
 }
 
@@ -94,7 +96,6 @@ function monthinc() {   //function for increasing the month and year
 	}
 }
 
-
 function yeardec() {    //function for decreasing the month and year
 	if (month <= 0) {
 		month = 11;
@@ -118,4 +119,8 @@ function yearinc() {   //function for increasing the month and year
 		year = year+1;
 		Datepicker(month,year);
 	}
+}
+
+function check(month_day) {
+	$('#textbox').val(resultyear + "/" +(resultmonth+1) + "/" + month_day);
 }

@@ -7,10 +7,20 @@
 	border-radius : 100px;
 }
 
-#monthtd {
+.tabledata1 {
+	cursor: pointer;
+}
+
+.tabledata1:hover {
+
+	background-color: blue;
+	border-radius : 100px;
 	color: rgba(255,255,255,2.5);
 }
 
+#monthtd {
+	color: rgba(255,255,255,2.5);
+}
 
 #mytable {
 	border-radius: 10px;
@@ -25,18 +35,6 @@
 	overflow: hidden;
 	position: fixed;
 	width: 100px;
-
-
-}
-
-#tabledata1 {
-	cursor: pointer;
-}
-#tabledata1:hover {
-
-	background-color: blue;
-	border-radius : 100px;
-	color: rgba(255,255,255,2.5);
 }
 
 #today {
