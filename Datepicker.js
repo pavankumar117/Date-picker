@@ -3,19 +3,26 @@ var date = getdate.getDate();
 var month = getdate.getMonth();
 var year = getdate.getFullYear();
 var Day = getdate.getDay();
+var h = getdate.getHours();
+var m = getdate.getMinutes();
+var s = getdate.getSeconds();
+var arr12 = [];
+var s1,s2,s3;
+console.log('check');
+console.log(s1);
+console.log(s2);
+console.log(s3);
 var no_of_month_days = new Date(getdate.getFullYear(),getdate.getMonth()+1,0).getDate();
 var armonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-		'Oct', 'Nov', 'Dec'];
+'Oct', 'Nov', 'Dec'];
 var arweeks = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 var resultyear = 0;
 var resultmonth = 0;
 //******Function Date Picker********
-
 function Datepicker(tempmonth,tempyear) {
 	var tempmonth = month;
 	var printtable =""
 	var tempyear = year;
-
 // Function for printing tables
 	function printtables(tempmonth,tempyear) {
 		var Monthtemp = getdate.getMonth(); //temparary variable taken for highlighting today
@@ -26,18 +33,23 @@ function Datepicker(tempmonth,tempyear) {
 		var total_Days_in_month = new Date(tempyear,tempmonth+1, 0).getDate();//gets total days in month
 		var count = 0;
 		printtable += "<table id = 'mytable'>";
-			printtable += "<tr colspan = '8' align = 'center'>";
-				printtable += "<th onclick = 'monthdec()' class = 'click'><</th>";
-				printtable += "<th colspan = '2' id = 'monthtd'>" + armonths[tempmonth] + "</th>";
-				printtable += "<th onclick = 'monthinc()' class = 'click'>></th>";
-				printtable += "<th onclick = 'yeardec()' class = 'click'><</th>";
-				printtable += "<th colspan = '2' id = 'yeartd'>" + tempyear + "</th>";
-				printtable += "<th onclick = 'yearinc()' class = 'click'>></th>";
-			printtable += "</tr>";
-			printtable += "<tr colspan = '8' align = 'center' colspan = '1'>"
-				for (var i = 0; i < arweeks.length; i++){
-					printtable += "<td id = 'weektd' colspan = '1'>" + arweeks[i] + "</td>";
-				}
+		printtable += "<tr align = 'center'>";
+		printtable += "<td id = 'clock' onclick = 'timepick()'><img src = 'clock.png' width = 20 height= 20></img></td>";
+		printtable += "<td colspan = 5></td>";
+		printtable += "<td><img src = 'logo.png' width = 20 height= 20></img></td>";
+		printtable += "</tr>";
+		printtable += "<tr  align = 'center'>";
+		printtable += "<th onclick = 'monthdec()' class = 'click'><</th>";
+		printtable += "<th colspan = '1' id = 'monthtd'>" + armonths[tempmonth] + "</th>";
+		printtable += "<th onclick = 'monthinc()' class = 'click'>></th>";
+		printtable += "<th onclick = 'yeardec()' class = 'click'><</th>";
+		printtable += "<th colspan = '2' id = 'yeartd'>" + tempyear + "</th>";
+		printtable += "<th onclick = 'yearinc()' class = 'click'>></th>";
+		printtable += "</tr>";
+		printtable += "<tr colspan = '8' align = 'center' colspan = '1'>"
+			for (var i = 0; i < arweeks.length; i++){
+				printtable += "<th id = 'weektd' colspan = '1'>" + arweeks[i] + "</td>";
+			}
 			printtable += "</tr>";
 			//printing week days at their positions
 			printtable += "<tr align = 'center' colspan = '1'>";
@@ -45,9 +57,7 @@ function Datepicker(tempmonth,tempyear) {
 					if (weekday === k) {
 						for(var month_days = 1; month_days <= total_Days_in_month; month_days++) {
 							if(Yeartemp == tempyear && Monthtemp == tempmonth && date === month_days){
-								/*above if condition checks the to days month , date with printing
-								month , date and print the value separately*/
-								printtable += "<td id = 'today' class = 'tabledata1' onclick = 'check(" + month_days + ")'>" + (month_days) + "</td>";
+								printtable += "<td align = 'center' id = 'today' class = 'tabledata1' onclick = 'check(" + month_days + ")'>" + (month_days) + "</td>";
 								count++;
 							}
 							else{
@@ -69,10 +79,11 @@ function Datepicker(tempmonth,tempyear) {
 		document.getElementById('mydiv').innerHTML=printtable;
 	 resultyear = tempyear;
 	 resultmonth = tempmonth;
+
 	}return printtables(tempmonth,tempyear);
 }
-
-function monthdec() {    //function for decreasing the month and year
+//function for decreasing the month and year
+function monthdec() {
 	if (month <= 0) {
 		month = 11;
 		year--;
@@ -83,10 +94,10 @@ function monthdec() {    //function for decreasing the month and year
 		Datepicker(month);
 	}
 }
-
-function monthinc() {   //function for increasing the month and year
+//function for increasing the month and year
+function monthinc() {
 	if (month >= 11){
-		month=0;
+		month = 0;
 		year++;
 		Datepicker(month,year);
 	}
@@ -95,8 +106,8 @@ function monthinc() {   //function for increasing the month and year
 		Datepicker(month,year);
 	}
 }
-
-function yeardec() {    //function for decreasing the month and year
+//function for decreasing the month and year
+function yeardec() {
 	if (month <= 0) {
 		month = 11;
 		year--;
@@ -107,9 +118,8 @@ function yeardec() {    //function for decreasing the month and year
 		Datepicker(month);
 	}
 }
-
-function yearinc() {   //function for increasing the month and year
-	console.log(year);
+//function for increasing the month and year
+function yearinc() {
 	if (month >= 11){
 		month = 0;
 		year++;
@@ -124,4 +134,73 @@ function yearinc() {   //function for increasing the month and year
 function check(month_day) {
 	$('#textbox').val(resultyear + "/" +(resultmonth+1) + "/" + month_day);
 	$('#mytable').hide();
+}
+
+
+function settime() {
+	var today = new Date();
+	var h = today.getHours();
+	var m = today.getMinutes();
+	var s = today.getSeconds();
+	m = checkTime(m);
+	s = checkTime(s);
+	/*console.log('check');
+	console.log(s1);
+	console.log(s2);
+	console.log(s3); */
+	var tabletime =""
+	tabletime += "<table id = tabletime><tr>";
+	tabletime += "<td>@</td><td>" + h + ':' + "</td>";
+	tabletime +="<td>" + m + ':' + "</td>";
+	tabletime += "<td>" + s + ':' + "</td><td>@</td>";
+	tabletime += "</tr></table>";
+	document.getElementById('mydiv2').innerHTML= tabletime;
+	var t = setTimeout(settime, 500);
+
+
+}
+function checkTime(i) {
+	if (i <= 10) {
+		i = '0'+i;
+	}
+	return i;
+}
+
+// Event listenebr for Picking time
+function timepick() {
+ var printtime =""
+ printtime += "<select id = 'hour'>";
+ for(var i = 0; i < 24; i++){
+	 printtime += "<option onclick = 'validate(" + i + ")'>" + i + "</option>";
+ }
+ printtime += "</select>";
+ printtime += "<select id = 'minute'>";
+ for(var j = 0; j < 60; j++){
+	printtime += "<option onclick = 'validate(" + j + ")'>" + j + "</option>";
+ }
+ printtime += "</select>";
+ printtime += "<select id = 'second'>";
+ for(var k = 0; k < 60; k++){
+	 printtime += "<option onclick = 'validate(" + k + ")'>" + k + "</option>";
+ }
+ printtime += "</select>";
+ console.log(i);
+ document.getElementById('mydiv3').innerHTML=printtime;
+}
+
+function validate(x){
+	if(x >= 0 && arr12.length >= 3){
+		console.log('popped out');
+		arr12.splice('*');
+	}
+	else if(x >= 0){
+		arr12.push(x);
+	}
+	 s1 = arr12[0];
+	 s2 = arr12[1];
+	 s3 = arr12[2];
+	 console.log('insert');
+	console.log(s1);
+	console.log(s2);
+	console.log(s3);
 }

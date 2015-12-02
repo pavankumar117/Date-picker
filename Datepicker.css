@@ -32,8 +32,6 @@
 	margin-left: 5px;
 	margin-right: 0px;
 	padding: 15px;
-	overflow: hidden;
-	position: fixed;
 	width: 100px;
 }
 
@@ -43,6 +41,13 @@
 	cursor: pointer;
 }
 
+#tabletime {
+	border-radius: 10px;
+	background-color: skyblue;
+	border: 2px solid black;
+	color: hsl(35, 100%, 100%);
+	margin-left: 50px;
+}
 #weektd {
 	color: rgba(255,255,255,2.5);
 	margin-left: 0px;
