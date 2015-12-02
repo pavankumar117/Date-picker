@@ -123,4 +123,5 @@ function yearinc() {   //function for increasing the month and year
 
 function check(month_day) {
 	$('#textbox').val(resultyear + "/" +(resultmonth+1) + "/" + month_day);
+	$('#mytable').hide();
 }
