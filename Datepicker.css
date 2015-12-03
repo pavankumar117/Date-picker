@@ -2,9 +2,10 @@
 	cursor: pointer;
 	font-weight: bold;
 }
+
 .click:hover {
 	background-color: yellow;
-	border-radius : 100px;
+	border-radius: 100px;
 }
 
 .tabledata1 {
@@ -12,7 +13,6 @@
 }
 
 .tabledata1:hover {
-
 	background-color: blue;
 	border-radius : 100px;
 	color: rgba(255,255,255,2.5);
@@ -48,6 +48,7 @@
 	color: hsl(35, 100%, 100%);
 	margin-left: 50px;
 }
+
 #weektd {
 	color: rgba(255,255,255,2.5);
 	margin-left: 0px;
